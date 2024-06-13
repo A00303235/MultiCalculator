@@ -26,14 +26,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
-
             MyApplicationTheme {
-
                 Surface {
                     CalcView()
                 }
-
             }
         }
     }
@@ -50,13 +46,14 @@ fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
     }
 }
 
+
 @Composable
 fun CalcDisplay(display: MutableState<String>) {
     Text(
         text = display.value,
         fontSize = 42.sp,
         modifier = Modifier
-            .height (65.dp)
+            .height (50.dp)
             .padding(5.dp)
             .fillMaxWidth()
     )
@@ -68,27 +65,32 @@ fun CalcNumericButton(number: Int, display: MutableState<String>) {
     Button(
         onClick = { display.value += number.toString() },
         modifier = Modifier.padding(4.dp)
-    ) {
+    )
+    {
         Text(text = number.toString())
     }
 }
 
+
 @Composable
 fun CalcOperationButton(operation: String, display: MutableState<String>) {
     Button(
-        onClick = { /* Handle operation */ },
+        onClick = {  },
         modifier = Modifier.padding(4.dp)
-    ) {
+    )
+    {
         Text(text = operation)
     }
 }
+
 
 @Composable
 fun CalcEqualsButton(display: MutableState<String>) {
     Button(
         onClick = { display.value = "0" },
         modifier = Modifier.padding(4.dp)
-    ) {
+    )
+    {
         Text(text = "=")
     }
 }
